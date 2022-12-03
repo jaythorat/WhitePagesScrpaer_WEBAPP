@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" style="color: rgb(255,255,255);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="#" />
+    <title>Webscraper | Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      setTimeout(function(){
+        window.location.reload();
+     }, 180000);
+    </script>
+    {% comment %} <script>
+      setTimeout(function(){
+        $.ajax({
+  
+          method: "POST",
+          url: "progress/",
+        data: {
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+         },
+          success: function(data, textStatus, request) {
+          var progress = data
+          console.log(data) 
+          //update your DOM with new data recieved in **data**
+        }
+  });
+     }, 500);
+     </script> {% endcomment %}
+    <style>
+        #csvfiles {
+          background: rgba(9,79,109,0.26);
+          padding-top: 10px;
+          padding-left: 10px;
+          border-radius: 10px;
+          max-height: 300px !important;
+          padding-bottom: 10px;
+        }
+        
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        
+        /* Handle */
+        
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+          #homesection {
+            height: auto;
+            margin-top: 25vh;
+            margin-bottom: 25vh;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .homecols {
+            width: 100%;
+          }
+        }
+        
+        @media (max-width: 991px) {
+          #loginformcol {
+            width: 100% !important;
+          }
+        }
+        
+        .bs-icon.bs-icon-circle {
+          border-radius: 50%;
+        }
+        
+        .bs-icon {
+          --bs-icon-size: .75rem;
+          display: flex;
+          flex-shrink: 0;
+          justify-content: center;
+          align-items: center;
+          font-size: var(--bs-icon-size);
+          width: calc(var(--bs-icon-size) * 2);
+          height: calc(var(--bs-icon-size) * 2);
+          color: var(--bs-primary);
+        }
+        
+        .bs-icon-xs {
+          --bs-icon-size: 1rem;
+          width: calc(var(--bs-icon-size) * 1.5);
+          height: calc(var(--bs-icon-size) * 1.5);
+        }
+        
+        .bs-icon-sm {
+          --bs-icon-size: 1rem;
+        }
+        
+        .bs-icon-md {
+          --bs-icon-size: 1.5rem;
+        }
+        
+        .bs-icon-lg {
+          --bs-icon-size: 2rem;
+        }
+        
+        .bs-icon-xl {
+          --bs-icon-size: 2.5rem;
+        }
+        
+        .bs-icon.bs-icon-primary {
+          color: var(--bs-white);
+          background: var(--bs-primary);
+        }
+        
+        .bs-icon.bs-icon-primary-light {
+          color: var(--bs-primary);
+          background: rgba(var(--bs-primary-rgb), .2);
+        }
+        
+        .bs-icon.bs-icon-semi-white {
+          color: var(--bs-primary);
+          background: rgba(255, 255, 255, .5);
+        }
+        
+        .bs-icon.bs-icon-rounded {
+          border-radius: .5rem;
+        }
+        
+        #csvfiles {
+          overflow-x: hidden !important;
+        }
+        
+        .form-control:focus {
+          border-color: #71717133;
+          box-shadow: 0 0 0 0.25rem rgba(131,131,132,0);
+        }
+        
+        
+    </style>
+</head>
+
+<body style="width: 100vw;min-height: 100vh;background: #0f5674;color: rgb(255,255,255);font-family: ABeeZee, sans-serif;">
+    <nav class="navbar navbar-light navbar-expand-md sticky-top" style="border-color: rgb(255,255,255);color: rgb(255,255,255);background: rgb(33,37,41);width: 100%;min-height: 10vh;">
+        <div class="container"><a class="navbar-brand" href="#" style="color: rgba(255,255,255,0.9);">Webscraper</a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="/logout/" style="color: rgb(255,255,255);padding-right: 10px;">Logout</a></li>
+            </ul>
+        </div>
+    </nav><!-- Start: Data -->
+    <section class="text-center d-flex d-lg-flex align-items-center align-items-lg-center position-relative py-4 py-xl-5" id="homesection" style="width: auto;height: 80vh;padding: 0 !important;">
+        <!-- Start: 1 Row 2 Columns -->
+        <div class="container" style="background: #ffffff;border-radius: 10px;">
+            <header>
+                <h1 style="color: rgb(255,0,0);text-align: center;font-size: 25px;margin-top: 5px;"><span style="color: rgb(9, 79, 109);">Scraper Status :</span>{% if flag %} Scraping Previous Data. {{progress}}% {% else %}<span style="color: rgb(0, 159, 6);"> Ready to use.</span> {% endif %}</h1>
+            </header>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-6 homecols" style="text-align: center;padding-left: 8%;padding-right: 8%;padding-top: 3%;padding-bottom: 3%;border-right: 1px inset rgba(9,79,109,0.56) ;">
+                    <h2 style="color: rgb(9,79,109);font-family: ABeeZee, sans-serif;font-size: 25px;margin-bottom: 10%;">Enter the details to start scraping.</h2>
+                    <form class="text-center" method="post">
+                      {% csrf_token %}
+                        <div style="text-align: left;"><label class="form-label" style="color: #094F6D;">Names :</label><textarea class="form-control" name="names" placeholder="eg. James,Smith,Miller etc." required="" minlength="2"></textarea><label class="form-label" style="color: #094F6D;margin-top: 6px;margin-bottom: 5px;">Locations :</label><textarea class="form-control" name="locations" placeholder="eg. 40202&#10oakland, CA&#10New York&#10CA  etc." required="" minlength="2"></textarea></div>
+                        <div class="mb-3"></div>
+                        <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(9,79,109);">Start Scraping</button></div>
+                    </form>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 3px;margin-bottom: 5px;">* Enter NAMES &amp; LOCATIONS&nbsp; in the required format only<br>eg. name1,name2 &amp; location1\n locations2\n location3 (~ \n = new line)<br></p>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 3px;margin-bottom: 5px;">* Providing new data to the tool in between the previous process may lead to unexpected interruption to the last process.<br></p>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 3px;margin-bottom: 5px;">* After entering details please wait atleast 1-2 mins to get few results in csv file.</p>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 3px;margin-bottom: 5px;">* In case of any unexpected interruption you can download backup <a href="/backup-names">names</a> & <a href="/backup-locations">locations</a> from here</p>
+                  </div>
+                <div class="col-md-6 homecols" style="text-align: center;padding-left: 8%;padding-right: 8%;padding-top: 3%;padding-bottom: 3%;">
+                    <h2 style="color: rgb(9,79,109);font-family: ABeeZee, sans-serif;font-size: 25px;margin-bottom: 10%;">Data Files</h2>
+                    <div class="d-grid" id="csvfiles" style="text-align: left;max-width: none;max-height: 350px;overflow: scroll;">
+                      {% for files in csvfiles.filename %}
+                      <a href="/download/{{files}}" style="color: rgb(0,0,0);">{{files}}</a>
+                      {% endfor %}
+                    </div>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 5px;margin-bottom: 5px;">* Click on the CSV file to download the file.&nbsp;</p>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 3px;margin-bottom: 5px;">* Reload the page to get the most recent data.</p>
+                    <p style="color: rgb(0,0,0);text-align: left;font-style: italic;font-size: 13px;margin-top: 3px;margin-bottom: 5px;">NOTE&nbsp; :&nbsp; Date and Name on the file name is according to the server time .(MAY DIFFER WITH YOUR LOCAL TIME)</p>
+                </div>
+            </div>
+        </div><!-- End: 1 Row 2 Columns -->
+    </section><!-- End: Data -->
+    <!-- Start: Footer Dark -->
+    <footer class="bg-dark d-flex d-md-flex d-xl-flex justify-content-center align-items-center justify-content-md-center justify-content-xl-center align-items-xl-center" style="background: rgb(33, 37, 41);min-height: 10vh;">
+        <div class="container py-4 py-lg-5" style="margin: 0;padding: 10px !important;width: 100%;">
+            <p class="text-center text-muted mb-0" style="width: 100%;">Copyright © 2022&nbsp;</p>
+        </div>
+    </footer><!-- End: Footer Dark -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- </script> -->
+
+    
+</body>
+
+</html>

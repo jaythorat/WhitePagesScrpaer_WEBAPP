@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" style="color: rgb(255,255,255);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Webscraper | Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        #csvfiles {
+          background: rgba(9,79,109,0.26);
+          padding-top: 10px;
+          padding-left: 10px;
+          border-radius: 10px;
+          max-height: 300px !important;
+          padding-bottom: 10px;
+        }
+        
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+        
+        /* Handle */
+        
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+          #homesection {
+            height: auto;
+            margin-top: 25vh;
+            margin-bottom: 25vh;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .homecols {
+            width: 100%;
+          }
+        }
+        
+        @media (max-width: 991px) {
+          #loginformcol {
+            width: 100% !important;
+          }
+        }
+        
+        .bs-icon.bs-icon-circle {
+          border-radius: 50%;
+        }
+        
+        .bs-icon {
+          --bs-icon-size: .75rem;
+          display: flex;
+          flex-shrink: 0;
+          justify-content: center;
+          align-items: center;
+          font-size: var(--bs-icon-size);
+          width: calc(var(--bs-icon-size) * 2);
+          height: calc(var(--bs-icon-size) * 2);
+          color: var(--bs-primary);
+        }
+        
+        .bs-icon-xs {
+          --bs-icon-size: 1rem;
+          width: calc(var(--bs-icon-size) * 1.5);
+          height: calc(var(--bs-icon-size) * 1.5);
+        }
+        
+        .bs-icon-sm {
+          --bs-icon-size: 1rem;
+        }
+        
+        .bs-icon-md {
+          --bs-icon-size: 1.5rem;
+        }
+        
+        .bs-icon-lg {
+          --bs-icon-size: 2rem;
+        }
+        
+        .bs-icon-xl {
+          --bs-icon-size: 2.5rem;
+        }
+        
+        .bs-icon.bs-icon-primary {
+          color: var(--bs-white);
+          background: var(--bs-primary);
+        }
+        
+        .bs-icon.bs-icon-primary-light {
+          color: var(--bs-primary);
+          background: rgba(var(--bs-primary-rgb), .2);
+        }
+        
+        .bs-icon.bs-icon-semi-white {
+          color: var(--bs-primary);
+          background: rgba(255, 255, 255, .5);
+        }
+        
+        .bs-icon.bs-icon-rounded {
+          border-radius: .5rem;
+        }
+        
+        #csvfiles {
+          overflow-x: hidden !important;
+        }
+        
+        .form-control:focus {
+          border-color: #71717133;
+          box-shadow: 0 0 0 0.25rem rgba(131,131,132,0);
+        }
+        
+        
+    </style>
+</head>
+
+<body style="width: 100vw;min-height: 100vh;background: #0f5674;color: rgb(255,255,255);font-family: ABeeZee, sans-serif;height: auto;">
+    <nav class="navbar navbar-light navbar-expand-md sticky-top" style="border-color: rgb(255,255,255);color: rgb(255,255,255);background: rgb(33,37,41);width: 100%;min-height: 10vh;">
+        <div class="container"><a class="navbar-brand" href="#" style="color: rgba(255,255,255,0.9);">Webscraper</a></div>
+    </nav><!-- Start: Login Form Basic -->
+    <section class="text-center d-flex d-lg-flex align-items-center align-items-lg-center position-relative py-4 py-xl-5" style="width: auto;height: 80vh;padding: 0 !important;">
+        <div class="container d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center" style="color: rgb(255,255,255);">
+            <div class="row d-flex justify-content-center" style="width: 100%;">
+                <div class="col-md-6 col-xl-4 text-center align-self-center" id="loginformcol" style="width: 40%;padding-right: 10px;padding-left: 10px;">
+                    <div class="card mb-5" style="width: 100%;">
+                        <div class="card-body d-flex flex-column align-items-center">
+                            <h2 style="color: rgb(9,79,109);font-family: ABeeZee, sans-serif;">Good to see you again.</h2>
+                            <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4" style="background: #094f6d;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                </svg></div>
+                            <form class="text-center" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username" required="" minlength="1"></div>
+                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password" required="" minlength="4"></div>
+                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(9,79,109);">Login</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End: Login Form Basic -->
+    <!-- Start: Footer Dark -->
+    <footer class="bg-dark d-flex d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="background: rgb(33, 37, 41);min-height: 10vh;">
+        <div class="container py-4 py-lg-5" style="margin: 0;padding: 10px !important;width: 100%;">
+            <p class="text-center text-muted mb-0" style="width: 100%;">Copyright © 2022&nbsp;</p>
+        </div>
+    </footer><!-- End: Footer Dark -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
